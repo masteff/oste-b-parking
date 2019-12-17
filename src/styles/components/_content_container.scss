@@ -1,0 +1,24 @@
+.content_container {
+    margin: 0 auto;
+    padding: 0 $m-size;
+}
+
+.main_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0;
+}
+
+@media (max-width: 1200px){
+    .main_content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .content_container {
+        max-width: 100vw;
+    }
+}
+

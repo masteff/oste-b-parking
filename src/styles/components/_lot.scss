@@ -1,0 +1,97 @@
+// body {
+//     font-family: sans-serif;
+//     background-color: #1b1b1b;
+// }
+
+.grid-layout {
+    width: calc(100% - 620px);
+    height: 80vh;
+    display: grid;
+    grid-template-columns: repeat(20, minmax(20px, 1fr));
+    grid-gap: 10px;
+    grid-auto-rows: minmax(20px, auto);
+    grid-auto-flow: dense;
+    padding: 10px;
+}
+
+.grid-item {
+    padding: 1rem;
+    font-size: 15;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: #817b7b;
+    border-radius: 5px;
+}
+
+@mixin span($spanx, $spany) {
+    grid-column-end: span $spanx;
+    grid-row-end: span $spany;
+    background-color: #333;
+}
+
+.span-test {
+    grid-column-end: 3;
+    grid-row-end: 3;
+    background-color: #333;
+}
+
+.span-4-6 {
+    @include span(4,6);
+}
+.span-2-4 {
+    @include span(2,4);
+}
+.span-13-1 {
+    @include span(13,1);
+}
+.span-2-2 {
+    @include span(2,2);
+}
+.span-2-4 {
+    @include span(2,4);
+}
+.span-6-2 {
+    @include span(6,2);
+}
+.span-1-10 {
+    @include span(1,10);
+}
+.span-2-10 {
+    @include span(2,10);
+}
+.span-20-2 {
+    @include span(20,2);
+}
+
+.span-20-1 {
+    @include span(20,1);
+}
+.span-1-2 {
+    @include span(1,2);
+}
+.span-4-1 {
+    @include span(4,1);
+}
+
+
+.spot-vert-o{
+    @include span(1,2);
+    background-color: #817b7b;
+    cursor: pointer;
+    border: solid 2px darkgray;
+}
+.spot-horz-o{
+    @include span(2,1);
+    background-color: #817b7b;
+    cursor: pointer;
+    border: solid 2px darkgray;
+}
+.spot-vert-x{
+    @include span(1,2);
+}
+.spot-horz-x{
+    @include span(2,1);
+}

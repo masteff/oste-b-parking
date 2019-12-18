@@ -1,8 +1,8 @@
 {
-  "name": "osteparking",
+  "name": "oste-b-parking",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Andrew Mead",
+  "author": "Martin Steffan",
   "license": "MIT",
   "scripts": {
     "build:prod": "webpack -p --env production",

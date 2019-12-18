@@ -29,7 +29,7 @@ const renderApp = () => {
     }
 }
 
-// ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 auth.onAuthStateChanged(user => {
     if (user) {

@@ -4,11 +4,11 @@
 // }
 
 .grid-layout {
-    width: calc(100% - 620px);
-    height: 80vh;
+    width: calc(100vw - 680px);
+    height: calc((100vw - 680px)*0.75);
     display: grid;
     grid-template-columns: repeat(20, minmax(20px, 1fr));
-    grid-gap: 10px;
+    grid-gap: 2px;
     grid-auto-rows: minmax(20px, auto);
     grid-auto-flow: dense;
     padding: 10px;

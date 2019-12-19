@@ -9,7 +9,7 @@ export const Header = ({ signOut }) => (
         <div className="header">
             <div className="content_container">
                 <div className="header_content">
-                    <h1 className="header__title">oste parking</h1>
+                    <h1 className="header__title">oste-b parking</h1>
                     <button className="button button--link" onClick={signOut}>Logout</button>
                 </div>
             </div>

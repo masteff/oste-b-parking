@@ -23,19 +23,18 @@ const jsx = (
 let hasRendered = false
 const renderApp = () => {
     if (!hasRendered) {
-        console.log('rendered');
         hasRendered = true
         ReactDOM.render(jsx, document.getElementById('app'));
     }
 }
 
-ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
+// ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 auth.onAuthStateChanged(user => {
     if (user) {
-        store.dispatch(login(user.uid, user.displayName))
         store.dispatch(startGetSpots()).then(() => {
             store.dispatch(startGetFreeDates()).then(() => {
+                store.dispatch(login(user.uid, user.displayName))
                 renderApp()
                 if (history.location.pathname === '/') {
                     history.push('u1')
@@ -45,7 +44,7 @@ auth.onAuthStateChanged(user => {
         })
     }
     else {
-        store.dispatch(startGetFreeDates())
+        //store.dispatch(startGetFreeDates())
         store.dispatch(logout())
         renderApp()
         history.push('/')

@@ -4,6 +4,7 @@ import { startOwnSpot, startGiveSpot } from '../actions/spots'
 import { setSpotOpen } from '../actions/filters'
 import SpotModal from './SpotModal'
 import moment from 'moment'
+import {auth} from '../firebase/firebase'
 
 const Spot = (props) => {
 
@@ -24,13 +25,15 @@ const Spot = (props) => {
         props.setOpen(false)
     }
 
+    const free = props.freeOn.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
+
     return (
         <React.Fragment>
             <div onClick={onOpen}
                 className={props.layout}
-                    style={(props.freeOn.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
+                    style={free
                         ?
-                        {background: 'limegreen'} : {})}
+                        {background: 'limegreen'} : {}}
             >
                 {props.number}
             </div>
@@ -41,6 +44,10 @@ const Spot = (props) => {
                 owner={props.owner}
                 onClose={onClose}
                 number={props.number}
+                uid={props.uid}
+                ownerid={props.ownerid}
+                hasspot={props.hasspot}
+                free={free}
             />
         </React.Fragment>
     )

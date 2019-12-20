@@ -1,9 +1,10 @@
 import {auth} from '../firebase/firebase'
 
-export const login = (uid, name) => ({
+export const login = (uid, name,hasspot) => ({
     type: 'LOGIN',
     uid,
-    name
+    name,
+    hasspot
 })
 
 export const startLogin = (email, password) => {

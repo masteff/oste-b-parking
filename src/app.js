@@ -10,6 +10,7 @@ import { auth } from './firebase/firebase'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss'
 import 'react-dates/lib/css/_datepicker.css'
+import spots from './reducers/spots';
 
 
 const store = configureStore()
@@ -34,7 +35,7 @@ auth.onAuthStateChanged(user => {
     if (user) {
         store.dispatch(startGetSpots()).then(() => {
             store.dispatch(startGetFreeDates()).then(() => {
-                store.dispatch(login(user.uid, user.displayName))
+                store.dispatch(login(user.uid, user.displayName,!!store.getState().spots.find((spot) => spot.ownerid === user.uid)))  //Login with ID, name, hasspot?
                 renderApp()
                 if (history.location.pathname === '/') {
                     history.push('u1')

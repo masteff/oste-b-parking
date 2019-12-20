@@ -5,12 +5,14 @@ import { setSpotOpen } from '../actions/filters'
 import SpotModal from './SpotModal'
 import moment from 'moment'
 
+
 const Spot = (props) => {
 
     const [open, setOpen] = useState(false)
 
     const onSetOwner = () => {
         props.setOwner({ id: props.id })
+        onClose()
     }
     const onSetFree = () => {
         props.setFree({ id: props.id, freeOn: props.actualDate })

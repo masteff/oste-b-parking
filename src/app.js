@@ -33,6 +33,7 @@ const renderApp = () => {
 
 auth.onAuthStateChanged(user => {
     if (user) {
+        console.log('funk');
         store.dispatch(startGetSpots()).then(() => {
             store.dispatch(startGetFreeDates()).then(() => {
                 store.dispatch(login(user.uid, user.displayName,!!store.getState().spots.find((spot) => spot.ownerid === user.uid)))  //Login with ID, name, hasspot?

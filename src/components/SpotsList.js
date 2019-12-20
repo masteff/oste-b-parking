@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import Spot from './Spot'
 
 
+
 export const SpotsList = ({floor,spots,filters,uid,hasspot}) => (
     floor === 'u1' ? (<div className='grid-layout'>
         <div className='grid-item spot-vert-x'>5</div>

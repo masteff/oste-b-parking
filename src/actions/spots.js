@@ -1,4 +1,5 @@
 import database from '../firebase/firebase'
+import {history} from '../routers/AppRouter'
 
 //own spot
 export const ownSpot = ({owner = '', id} = {}) => ({
@@ -14,6 +15,9 @@ export const startOwnSpot = ({id} = {}) => {
         dispatch(ownSpot({id,owner}))
         database.ref(`spots/${id}/owner`).set(owner)
         database.ref(`spots/${id}/ownerid`).set(uid)
+        dispatch(startGetSpots()).then(() => {
+            history.push('/')
+        })
     }
 }
 //give spot

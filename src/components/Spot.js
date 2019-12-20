@@ -4,7 +4,6 @@ import { startOwnSpot, startGiveSpot } from '../actions/spots'
 import { setSpotOpen } from '../actions/filters'
 import SpotModal from './SpotModal'
 import moment from 'moment'
-import {auth} from '../firebase/firebase'
 
 const Spot = (props) => {
 
@@ -15,6 +14,7 @@ const Spot = (props) => {
     }
     const onSetFree = () => {
         props.setFree({ id: props.id, freeOn: props.actualDate })
+        onClose()
     }
     const onOpen = () => {
         setOpen(true)

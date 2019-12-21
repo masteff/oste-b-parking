@@ -1,23 +1,21 @@
 import database from '../firebase/firebase'
-import {history} from '../routers/AppRouter'
-
+import {login} from './auth'
 //own spot
-export const ownSpot = ({owner = '', id} = {}) => ({
+export const ownSpot = ({owner = '', id, uid} = {}) => ({
     type: 'OWN_SPOT',
     id,
-    owner
+    owner,
+    uid
 })
 
 export const startOwnSpot = ({id} = {}) => {
     return (dispatch, getState) => {
         const owner = getState().auth.name
         const uid = getState().auth.uid
-        dispatch(ownSpot({id,owner}))
+        dispatch(ownSpot({id,owner,uid}))
+        dispatch(login(uid,owner,true))
         database.ref(`spots/${id}/owner`).set(owner)
         database.ref(`spots/${id}/ownerid`).set(uid)
-        dispatch(startGetSpots()).then(() => {
-            history.push('/')
-        })
     }
 }
 //give spot

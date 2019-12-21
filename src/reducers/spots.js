@@ -12,7 +12,8 @@ export default (state = spotsDefaultState, action) => {
                 if (spot.id === action.id){
                     return {
                         ...spot,
-                        owner: action.owner
+                        owner: action.owner,
+                        ownerid: action.uid
                     }
                 } else {
                     return spot

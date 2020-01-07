@@ -13,7 +13,7 @@ const SpotModal = ({ open, number, onSetOwner, onSetFree, owner, onClose, owneri
         <p className="header__title" style={pStyle}>{number}</p>
         <p className="header__title" style={pStyle}>gehört</p>
         <p className="header__title" style={pStyle}>{owner || 'niemand'}</p>
-        {!hasspot && !ownerid && <button className="button" disabled={false} onClick={onSetOwner}>Meiner!</button>}
+        {!hasspot && !ownerid && <button className="button" onClick={onSetOwner}>Meiner!</button>}
         {uid === ownerid && !free && <button className="button" onClick={onSetFree}>Geben!</button>}
         {free && !hasspot && <button className="button" >Nehmen!</button>}
     </Modal>

@@ -28,3 +28,5 @@ export {firebase, auth, database as default}
 //         freeOn: 0
 //     })
 // }
+
+// database.ref('freeDates').push(0)

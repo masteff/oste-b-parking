@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 
 const SignIn = (props) => {
 
+    let name
+
     const [email, setEmail] = useState('')
-    const [name, setName] = useState('')
     const [password, setPassword] = useState('')
 
     const onEmailChange = (e) => {
@@ -14,10 +15,9 @@ const SignIn = (props) => {
     const onPasswordChange = (e) => {
         setPassword(e.target.value)
     }
-    const onNameChange = (e) => {
-        setName(e.target.value)
-    }
+
     const onCreate = () => {
+        name = (email.substr(0,1) + email.split('.')[1].substr(0,1)).toUpperCase()
         props.create(email, password, name)
     }
     const onSignIn = () => {
@@ -30,12 +30,13 @@ const SignIn = (props) => {
         return (
             <div className="box-layout">
                 <div className="box-layout__box">
-                    <h1 className="box-layout__title">oste parking</h1>
-                    <input type='text' placeholder='E-Mail' onChange={onEmailChange} />
+                    <h1 className="box-layout__title">oste-b parking</h1>
+                    <input type='text' placeholder='max.mustermann@olympus-oste.eu' onChange={onEmailChange} />
                     <input type='password' placeholder='Passwort' onChange={onPasswordChange} />
-                    <input type='text' placeholder='Username' onChange={onNameChange} />
+                    {/* <input type='text' placeholder='Username' onChange={onNameChange} /> */}
                     <button className="button" onClick={onSignIn}>Einloggen</button>
                     <button className="button" onClick={onCreate}>Registrieren</button>
+                    <label style={{height: '2rem', marginTop: '2rem'}}></label>
                     {/* <button onClick={onVerify}>Verify</button> */}
                 </div>
             </div>

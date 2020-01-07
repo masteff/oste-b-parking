@@ -45,7 +45,7 @@ auth.onAuthStateChanged(user => {
         })
     }
     else {
-        //store.dispatch(startGetFreeDates())
+        store.dispatch(startGetFreeDates())
         store.dispatch(logout())
         renderApp()
         history.push('/')

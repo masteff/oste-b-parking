@@ -25,7 +25,9 @@ export {firebase, auth, database as default}
 //         number: i,
 //         owner: '',
 //         ownerid:'',
-//         freeOn: 0
+//         freeOn: 0,
+//         takenBy:'',
+//         takenOn: 0
 //     })
 // }
 

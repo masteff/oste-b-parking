@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { startOwnSpot, startGiveSpot } from '../actions/spots'
+import { startOwnSpot, startGiveSpot, startTakeSpot } from '../actions/spots'
 import { setSpotOpen } from '../actions/filters'
 import SpotModal from './SpotModal'
 import moment from 'moment'
@@ -18,6 +18,11 @@ const Spot = (props) => {
         props.setFree({ id: props.id, freeOn: props.actualDate })
         onClose()
     }
+
+    const onSetTaken = () => {
+        props.setTaken({ id: props.id, takenOn: props.actualDate })
+    }
+
     const onOpen = () => {
         setOpen(true)
         props.setOpen(true)
@@ -43,6 +48,7 @@ const Spot = (props) => {
                 open={open}
                 onSetOwner={onSetOwner}
                 onSetFree={onSetFree}
+                onSetTaken={onSetTaken}
                 owner={props.owner}
                 onClose={onClose}
                 number={props.number}
@@ -59,7 +65,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         setOwner: (data) => dispatch(startOwnSpot(data)),
         setFree: (data) => dispatch(startGiveSpot(data)),
-        setOpen: (data) => dispatch(setSpotOpen(data))
+        setOpen: (data) => dispatch(setSpotOpen(data)),
+        setTaken: (data) => dispatch(startTakeSpot(data))
     }
 }
 

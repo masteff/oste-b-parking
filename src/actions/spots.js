@@ -34,6 +34,20 @@ export const startGiveSpot = ({id, freeOn} = {}) => {
         })
     }
 }
+//takeSpot
+export const takeSpot = ({id, takenOn, takenBy = ''} = {}) => ({
+    type: 'TAKE_SPOT',
+    id,
+    takenOn,
+    takenBy
+})
+
+export const startTakeSpot = ({id, takenOn} = {}) => {
+    return (dispatch,getState) => {
+        const takenBy = getState().auth.name
+        dispatch(takeSpot({id, takenOn, takenBy}))
+    }
+}
 
 export const getSpots = (spots) => ({
     type: 'GET_SPOTS',
@@ -51,6 +65,8 @@ export const startGetSpots = () => {
                     ownerid: child.val().ownerid,
                     number: child.val().number,
                     freeOn: Object.values(child.val().freeOn), 
+                    takenOn: Object.values(child.val().takenOn), 
+                    takenBy: child.val().takenBy
                 })
             })
             dispatch(getSpots(spots))

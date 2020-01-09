@@ -46,6 +46,17 @@ export const startTakeSpot = ({id, takenOn} = {}) => {
     return (dispatch,getState) => {
         const takenBy = getState().auth.name
         dispatch(takeSpot({id, takenOn, takenBy}))
+        return database.ref(`spots/${id}/freeOn`).set(0).then(() => {
+            database.ref('freeDates').set(0).then(() => {
+                // getState().spots.filter((spot) => spot.id === id).freeOn.forEach((date) => {
+                //     console.log(id , spot.id);
+                //     database.ref(`spots/${id}/freeOn`).push(date).then(() => {
+                //         database.ref('freeDates').push(date)
+                //     })
+                    
+                // })
+           })
+       })
     }
 }
 

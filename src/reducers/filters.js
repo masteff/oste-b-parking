@@ -2,7 +2,7 @@ import moment from 'moment'
 
 //filtersReducer
 const filtersDefaultState = {
-    actualDate: moment().valueOf(),
+    actualDate: moment().startOf('day').add(12, 'hours').valueOf(),
     freeDates: [],
     spotOpen: false
 }

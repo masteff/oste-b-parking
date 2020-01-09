@@ -6,7 +6,10 @@ import { setActualDate } from '../actions/filters';
 
 const DatePicker = (props) => {
 
-    const [date, setDate] = useState(moment())
+    var m = moment().startOf('day')
+
+    const [date, setDate] = useState(m)
+
 
     const onDateChange = (date) => {
         if (date) {

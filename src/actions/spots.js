@@ -44,19 +44,31 @@ export const takeSpot = ({id, takenOn, takenBy = ''} = {}) => ({
 
 export const startTakeSpot = ({id, takenOn} = {}) => {
     return (dispatch,getState) => {
-        const takenBy = getState().auth.name
-        dispatch(takeSpot({id, takenOn, takenBy}))
-        return database.ref(`spots/${id}/freeOn`).set(0).then(() => {
-            database.ref('freeDates').set(0).then(() => {
-                // getState().spots.filter((spot) => spot.id === id).freeOn.forEach((date) => {
-                //     console.log(id , spot.id);
-                //     database.ref(`spots/${id}/freeOn`).push(date).then(() => {
-                //         database.ref('freeDates').push(date)
-                //     })
+        // const takenBy = getState().auth.name 
+        // dispatch(takeSpot({id, takenOn, takenBy}))
+
+        return database.ref(`spots/${id}/freeOn`).orderByValue().equalTo(takenOn).once('value', (snapshot) => {
+            if(snapshot)
+            {const key = Object.keys(snapshot.val())[0]
+            console.log(key)
+            database.ref(`spots/${id}/freeOn/${key}`).set(null)}
+            else {
+                console.log('leer')
+            }
+        
+        })
+
+    //     return database.ref(`spots/${id}/freeOn`).set(0).then(() => {
+    //         database.ref('freeDates').set(0).then(() => {
+    //             // getState().spots.filter((spot) => spot.id === id).freeOn.forEach((date) => {
+    //             //     console.log(id , spot.id);
+    //             //     database.ref(`spots/${id}/freeOn`).push(date).then(() => {
+    //             //         database.ref('freeDates').push(date)
+    //             //     })
                     
-                // })
-           })
-       })
+    //             // })
+    //        })
+    //    })
     }
 }
 

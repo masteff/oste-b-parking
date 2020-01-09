@@ -33,14 +33,13 @@ const Spot = (props) => {
     }
 
     const free = props.freeOn.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
+    const taken = props.takenOn.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
 
     return (
         <React.Fragment>
             <div onClick={onOpen}
                 className={props.layout}
-                    style={free
-                        ?
-                        {background: 'limegreen'} : {}}
+                    style={free  ? {background: 'limegreen'} : (taken ? {background: 'lightblue'} : {})}
             >
                 {props.number}
             </div>

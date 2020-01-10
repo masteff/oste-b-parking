@@ -18,7 +18,8 @@ const auth = firebase.auth()
 
 export {firebase, auth, database as default}
 
-
+// database.ref('spots').remove()
+// database.ref('freeDates').remove()
 
 // for(let i=1; i <= 200; i++){
 //     database.ref('spots').push({

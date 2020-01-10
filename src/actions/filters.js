@@ -19,7 +19,7 @@ export const getFreeDates = (freeDates) => ({
 export const startGetFreeDates = () => {
     return (dispatch) => {
         const filterAnswer = database.ref('freeDates').once('value').then((snapshot) => {
-            dispatch(getFreeDates(Object.values(snapshot.val())))
+            dispatch(getFreeDates(snapshot.val()))
         })
         return filterAnswer;
 

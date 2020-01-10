@@ -20,7 +20,7 @@ const Spot = (props) => {
     }
 
     const onSetTaken = () => {
-        props.setTaken({ id: props.id, takenOn: props.actualDate })
+        props.setTaken({ id: props.id, takenOn: props.actualDate, freeOn: props.freeOn })
     }
 
     const onOpen = () => {
@@ -32,8 +32,11 @@ const Spot = (props) => {
         props.setOpen(false)
     }
 
-    const free = props.freeOn.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
-    const taken = props.takenOn.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
+    const freeSpots = Object.values(props.freeOn)
+    const takenSpots = Object.values(props.takenOn)
+
+    const free = freeSpots.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
+    const taken = takenSpots.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
 
     return (
         <React.Fragment>

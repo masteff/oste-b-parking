@@ -25,9 +25,11 @@ export default (state = filtersDefaultState, action) => {
                 freeDates: [...state.freeDates, action.freeOn]
             }
         case 'TAKE_SPOT':
+            let key =  Object.keys(state.freeDates).find((key) => moment(state.freeDates[key]).isSame(moment(action.takenOn), 'day'))
+            delete state.freeDates[key]
             return {
                 ...state,
-                freeDates: state.freeDates.filter((value, index) => index !== state.freeDates.indexOf(state.freeDates.find((date) => moment(date).isSame(moment(action.takenOn), 'day'))))
+                freeDates: state.freeDates
             }
         case 'GET_FREE_DATES':
             return {

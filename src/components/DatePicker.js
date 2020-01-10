@@ -19,7 +19,7 @@ const DatePicker = (props) => {
     }
 
     const highlightDays = (day) => {
-        return props.filters.freeDates.some((date) => day.isSame(moment(date), 'day'))
+        return Object.values(props.filters.freeDates).some((date) => day.isSame(moment(date), 'day'))
     }
 
     const onFocusChange = ({ focused }) => {

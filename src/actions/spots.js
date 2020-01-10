@@ -42,21 +42,12 @@ export const takeSpot = ({id, takenOn, takenBy = ''} = {}) => ({
     takenBy
 })
 
-export const startTakeSpot = ({id, takenOn} = {}) => {
+export const startTakeSpot = ({id, takenOn, freeOn} = {}) => {
     return (dispatch,getState) => {
-        // const takenBy = getState().auth.name 
-        // dispatch(takeSpot({id, takenOn, takenBy}))
+        const takenBy = getState().auth.name 
+        dispatch(takeSpot({id, takenOn, takenBy}))
 
-        return database.ref(`spots/${id}/freeOn`).orderByValue().equalTo(takenOn).once('value', (snapshot) => {
-            if(snapshot)
-            {const key = Object.keys(snapshot.val())[0]
-            console.log(key)
-            database.ref(`spots/${id}/freeOn/${key}`).set(null)}
-            else {
-                console.log('leer')
-            }
-        
-        })
+        return database.ref(`spots/${id}/freeOn`).set(freeOn)
 
     //     return database.ref(`spots/${id}/freeOn`).set(0).then(() => {
     //         database.ref('freeDates').set(0).then(() => {
@@ -87,8 +78,8 @@ export const startGetSpots = () => {
                     owner: child.val().owner,
                     ownerid: child.val().ownerid,
                     number: child.val().number,
-                    freeOn: Object.values(child.val().freeOn), 
-                    takenOn: Object.values(child.val().takenOn), 
+                    freeOn: child.val().freeOn, 
+                    takenOn: child.val().takenOn, 
                     takenBy: child.val().takenBy
                 })
             })

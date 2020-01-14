@@ -8,6 +8,7 @@ const SignIn = (props) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
 
     const onEmailChange = (e) => {
         setEmail(e.target.value)
@@ -17,8 +18,13 @@ const SignIn = (props) => {
     }
 
     const onCreate = () => {
-        name = (email.substr(0,1) + email.split('.')[1].substr(0,1)).toUpperCase()
-        props.create(email, password, name)
+        if (/[a-z]+\.[a-z,\-]+\@gmx.de/.test(email)){
+            name = (email.substr(0,1) + email.split('.')[1].substr(0,1)).toUpperCase()
+            props.create(email, password, name)
+        }
+        else{
+            setMessage('Die E-Mail entspricht nicht dem Muster')
+        }
     }
     const onSignIn = () => {
         props.signIn(email, password)
@@ -36,7 +42,7 @@ const SignIn = (props) => {
                     {/* <input type='text' placeholder='Username' onChange={onNameChange} /> */}
                     <button className="button" onClick={onSignIn}>Einloggen</button>
                     <button className="button" onClick={onCreate}>Registrieren</button>
-                    <label style={{height: '2rem', marginTop: '2rem'}}></label>
+                    <label style={{height: '2rem', marginTop: '2rem'}}>{message}</label>
                     {/* <button onClick={onVerify}>Verify</button> */}
                 </div>
             </div>

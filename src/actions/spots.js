@@ -42,24 +42,16 @@ export const takeSpot = ({id, takenOn, takenBy = ''} = {}) => ({
     takenBy
 })
 
-export const startTakeSpot = ({id, takenOn, freeOn} = {}) => {
+export const startTakeSpot = ({id, takenOn} = {}) => {
     return (dispatch,getState) => {
         const takenBy = getState().auth.name 
         dispatch(takeSpot({id, takenOn, takenBy}))
 
-        return database.ref(`spots/${id}/freeOn`).set(freeOn)
-
-    //     return database.ref(`spots/${id}/freeOn`).set(0).then(() => {
-    //         database.ref('freeDates').set(0).then(() => {
-    //             // getState().spots.filter((spot) => spot.id === id).freeOn.forEach((date) => {
-    //             //     console.log(id , spot.id);
-    //             //     database.ref(`spots/${id}/freeOn`).push(date).then(() => {
-    //             //         database.ref('freeDates').push(date)
-    //             //     })
-                    
-    //             // })
-    //        })
-    //    })
+        return database.ref(`spots/${id}/taken`).push({takenOn,takenBy}).then(() => {
+            database.ref('freeDates').set(getState().filters.freeDates).then(() => {
+                database.ref(`spots/${id}/freeOn`).set(getState().spots.find((spot) => spot.id === id).freeOn)
+            })
+        })
     }
 }
 
@@ -79,8 +71,7 @@ export const startGetSpots = () => {
                     ownerid: child.val().ownerid,
                     number: child.val().number,
                     freeOn: child.val().freeOn, 
-                    takenOn: child.val().takenOn, 
-                    takenBy: child.val().takenBy
+                    taken: child.val().taken, 
                 })
             })
             dispatch(getSpots(spots))

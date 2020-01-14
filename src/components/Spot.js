@@ -20,7 +20,7 @@ const Spot = (props) => {
     }
 
     const onSetTaken = () => {
-        props.setTaken({ id: props.id, takenOn: props.actualDate, freeOn: props.freeOn })
+        props.setTaken({ id: props.id, takenOn: props.actualDate })
     }
 
     const onOpen = () => {
@@ -32,11 +32,30 @@ const Spot = (props) => {
         props.setOpen(false)
     }
 
-    const freeSpots = Object.values(props.freeOn)
-    const takenSpots = Object.values(props.takenOn)
+   
 
+    const freeSpots = Object.values(props.freeOn)
     const free = freeSpots.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
-    const taken = takenSpots.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))
+
+    const takenSpots = Object.values(props.taken).map((obj) => obj.takenOn)
+    const takenOwners = Object.values(props.taken).map((obj) => obj.takenBy)
+
+    let ind; 
+    let  takenOwner;
+
+    const takenSpot = takenSpots.filter((date, index) => {
+        ind = index;
+        return moment(date).isSame(moment(props.actualDate), 'day')
+    })
+
+    if(takenSpot.length){
+        takenOwner = takenOwners[ind]
+    }
+    else{
+        takenOwner = undefined
+    }
+    
+    const taken = takenSpot.length
 
     return (
         <React.Fragment>
@@ -58,6 +77,8 @@ const Spot = (props) => {
                 ownerid={props.ownerid}
                 hasspot={props.hasspot}
                 free={free}
+                taken={taken}
+                takenOwner={takenOwner}
             />
         </React.Fragment>
     )

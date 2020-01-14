@@ -35,12 +35,19 @@ export default (state = spotsDefaultState, action) => {
             return state.map((spot) => {
                 if (spot.id === action.id) {
                     const key =  Object.keys(spot.freeOn).find((key) => moment(spot.freeOn[key]).isSame(moment(action.takenOn), 'day'))
-                    const {[key]: value, ...freeOn} = spot.freeOn
+                    let {[key]: value, ...freeOn} = spot.freeOn
+                    if(Object.keys(freeOn).length === 0){
+                        freeOn = 0
+                    }
                     return {
                         ...spot,
                         freeOn: freeOn,
-                        takenOn: [...spot.takenOn, action.takenOn],
-                        takenBy: action.takenBy
+                        taken: [...spot.taken, {
+                            takenOn: action.takenOn,
+                            takenBy: action.takenBy
+                        }]
+                        // takenOn: [...spot.takenOn, action.takenOn],
+                        // takenBy: action.takenBy
                     }
                 } else {
                     return spot

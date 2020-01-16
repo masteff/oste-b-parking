@@ -21,6 +21,7 @@ const Spot = (props) => {
 
     const onSetTaken = () => {
         props.setTaken({ id: props.id, takenOn: props.actualDate })
+        onClose()
     }
 
     const onOpen = () => {

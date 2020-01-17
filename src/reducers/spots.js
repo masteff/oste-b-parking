@@ -42,10 +42,10 @@ export default (state = spotsDefaultState, action) => {
                     return {
                         ...spot,
                         freeOn: freeOn,
-                        taken: [...spot.taken, {
+                        taken: {...spot.taken, [action.takenOn]: {
                             takenOn: action.takenOn,
                             takenBy: action.takenBy
-                        }]
+                        }}
                         // takenOn: [...spot.takenOn, action.takenOn],
                         // takenBy: action.takenBy
                     }

@@ -4,13 +4,14 @@ import { Provider } from 'react-redux'
 import AppRouter, { history } from './routers/AppRouter'
 import configureStore from './store/configureStore'
 import { startGetSpots } from './actions/spots'
-import { startGetFreeDates } from './actions/filters'
+import { startGetFreeDates, setActualDate } from './actions/filters'
 import { login, logout } from './actions/auth'
 import { auth } from './firebase/firebase'
 import 'normalize.css/normalize.css';
 import './styles/styles.scss'
 import 'react-dates/lib/css/_datepicker.css'
 import spots from './reducers/spots';
+import moment from 'moment'
 
 
 const store = configureStore()
@@ -36,6 +37,8 @@ auth.onAuthStateChanged(user => {
         store.dispatch(startGetSpots()).then(() => {
             store.dispatch(startGetFreeDates()).then(() => {
                 store.dispatch(login(user.uid, user.displayName,!!store.getState().spots.find((spot) => spot.ownerid === user.uid)))  //Login with ID, name, hasspot?
+                const actualDate = moment().startOf('day').add(12, 'hours').valueOf()
+                store.dispatch(setActualDate(actualDate))
                 renderApp()
                 if (history.location.pathname === '/') {
                     history.push('u1')

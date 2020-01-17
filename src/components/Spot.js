@@ -33,7 +33,7 @@ const Spot = (props) => {
         props.setOpen(false)
     }
 
-   
+  
 
     const freeSpots = Object.values(props.freeOn)
     const free = freeSpots.some((date) => moment(date).isSame(moment(props.actualDate), 'day'))

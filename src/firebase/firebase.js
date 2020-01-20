@@ -1,7 +1,9 @@
-import * as firebase from 'firebase'
+import * as firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/database'
 
 const config = {
-  apiKey: "AIzaSyDEQ-moSaPkw8kA3hjkn9f0ouP8E1uF0Vo",
+  apiKey: "AIzaSyDEQ-moSaPkw8kA3hjkn9f0ouP8E1uF0Vo",  
   authDomain: "oste-parking.firebaseapp.com",
   databaseURL: "https://oste-parking.firebaseio.com",
   projectId: "oste-parking",

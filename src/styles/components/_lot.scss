@@ -14,6 +14,11 @@
     padding: 10px;
 }
 
+.grid-layout--u2{
+    @extend .grid-layout;
+    grid-template-columns: repeat(23, minmax(20px, 1fr));
+}
+
 .grid-item {
     width:100%;
     font-size: 10;
@@ -63,8 +68,14 @@
 .span-2-10 {
     @include span(2,10);
 }
+.span-3-10 {
+    @include span(3,10);
+}
 .span-20-2 {
     @include span(20,2);
+}
+.span-19-2 {
+    @include span(19,2);
 }
 
 .span-20-1 {

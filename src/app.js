@@ -33,7 +33,8 @@ const renderApp = () => {
 // ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 auth.onAuthStateChanged(user => {
-    if (user) {
+    if (user && user.emailVerified) {
+        console.log(user.emailVerified)
         store.dispatch(startGetSpots()).then(() => {
             store.dispatch(startGetFreeDates()).then(() => {
                 store.dispatch(login(user.uid, user.displayName,!!store.getState().spots.find((spot) => spot.ownerid === user.uid)))  //Login with ID, name, hasspot?
@@ -49,8 +50,10 @@ auth.onAuthStateChanged(user => {
     }
     else {
         store.dispatch(startGetFreeDates())
+        store.dispatch(startGetSpots())
         store.dispatch(logout())
         renderApp()
         history.push('/')
+        console.log('elseAuth')
     }
 })

@@ -8,8 +8,10 @@ export const login = (uid, name,hasspot) => ({
 })
 
 export const startLogin = (email, password) => {
-    return () => {
-        return auth.signInWithEmailAndPassword(email, password)
+    return (dispatch) => {
+         auth.signInWithEmailAndPassword(email, password).then(() => {
+            dispatch(login(auth.currentUser.uid, auth.currentUser.displayName))
+         })
         .catch(e => console.log(e.message))
     }
 }
@@ -32,7 +34,8 @@ export const startCreate = (email, password, name) => {
             res.user.updateProfile({
                 displayName: name
             }).then(() => {
-                dispatch(login(auth.currentUser.uid, auth.currentUser.displayName))
+                //dispatch(login(auth.currentUser.uid, auth.currentUser.displayName))
+                dispatch(startVerify())
             })
         }).catch(e => console.log(e.message))
     }
@@ -45,6 +48,10 @@ export const startVerify = () => {
                 return user.sendEmailVerification().then(() => {
                         console.log('email sent');
                 }).catch(e => console.log(e.message))
+            
+       }
+       else {
+           console.log('not yet user')
        }
     }
 }

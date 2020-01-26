@@ -18,9 +18,10 @@ const SignIn = (props) => {
     }
 
     const onCreate = () => {
-        if (/[a-z]+\.[a-z,\-]+\@gmx.de/.test(email)){
+        if (/[a-z]+\_[a-z,\-]+\@gmx.de/.test(email)){
             name = (email.substr(0,1) + email.split('.')[1].substr(0,1)).toUpperCase()
             props.create(email, password, name)
+            //onVerify()
         }
         else{
             setMessage('Die E-Mail entspricht nicht dem Muster')
@@ -30,6 +31,7 @@ const SignIn = (props) => {
         props.signIn(email, password)
     }
     const onVerify = () => {
+        console.log('onVerify')
         props.verify()
     }
 
@@ -53,7 +55,7 @@ const matchDispatchToProps = (dispatch) => ({
     signIn: (email, password) => dispatch(startLogin(email, password)),
     signOut: () => dispatch(startLogout()),
     create: (email, password, name) => dispatch(startCreate(email, password, name)),
-    verify: () => dispatch(startVerify)
+    verify: () => dispatch(startVerify())
 })
 
 export default connect(undefined, matchDispatchToProps)(SignIn)

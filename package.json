@@ -35,6 +35,7 @@
     "react-modal": "^3.10.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.2.2",
+    "react-tilt": "^0.1.4",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sass-loader": "^6.0.6",

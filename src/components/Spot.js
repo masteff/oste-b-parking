@@ -4,6 +4,7 @@ import { startOwnSpot, startGiveSpot, startTakeSpot } from '../actions/spots'
 import { setSpotOpen } from '../actions/filters'
 import SpotModal from './SpotModal'
 import moment from 'moment'
+import Tilt from 'react-tilt'
 
 
 const Spot = (props) => {
@@ -60,12 +61,14 @@ const Spot = (props) => {
 
     return (
         <React.Fragment>
-            <div onClick={onOpen}
-                className={props.layout}
-                    style={free  ? {background: 'limegreen'} : (taken ? {background: 'lightblue'} : {})}
-            >
+            <Tilt className={props.layout} options={{ max : 35 }}
+            style={free  ? {background: 'limegreen'} : (taken ? {background: 'lightblue'} : {})}
+            
+             >
+            <div onClick={onOpen} >
                 {props.number}
             </div>
+            </Tilt>
             <SpotModal
                 open={open}
                 onSetOwner={onSetOwner}

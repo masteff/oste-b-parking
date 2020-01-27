@@ -18,13 +18,13 @@ const SignIn = (props) => {
     }
 
     const onCreate = () => {
-        if (/[a-z]+\_[a-z,\-]+\@gmx.de/.test(email)){
+        if (/[a-z]+\_[a-z,\-]+\@gmx.de/.test(email) || /[a-z]+\.[a-z,\-]+\@olympus-oste.eu/.test(email)){
+            setMessage('Bitte überprüfe dein Postfach!')
             name = (email.substr(0,1) + email.split('.')[1].substr(0,1)).toUpperCase()
             props.create(email, password, name)
-            //onVerify()
         }
         else{
-            setMessage('Die E-Mail entspricht nicht dem Muster')
+            setMessage('Bitte Olympus Adresse verwenden!')
         }
     }
     const onSignIn = () => {

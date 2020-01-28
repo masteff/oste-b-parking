@@ -47,8 +47,26 @@
 .span-4-6 {
     @include span(4,6);
 }
+.span-4-2 {
+    @include span(4,2);
+}
+.span-4-4 {
+    @include span(4,4);
+}
 .span-2-4 {
     @include span(2,4);
+}
+.span-2-8 {
+    @include span(2,8);
+}
+.span-1-8 {
+    @include span(1,8);
+}
+.span-3-8 {
+    @include span(3,8);
+}
+.span-3-2 {
+    @include span(3,2);
 }
 .span-13-1 {
     @include span(13,1);
@@ -74,6 +92,9 @@
 .span-20-2 {
     @include span(20,2);
 }
+.span-21-2 {
+    @include span(21,2);
+}
 .span-19-2 {
     @include span(19,2);
 }
@@ -86,6 +107,9 @@
 }
 .span-4-1 {
     @include span(4,1);
+}
+.span-2-3 {
+    @include span(2,3);
 }
 
 

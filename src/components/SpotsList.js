@@ -21,7 +21,7 @@ export const SpotsList = ({ floor, spots, filters, uid, hasspot }) => (
         <div className='grid-item spot-vert-x'>16</div>
         <Spot {...spots[16]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
         <div className='grid-item spot-vert-x'>18</div>
-        <div className="grid-item spot-vert-x">Auf</div>
+        <div className="grid-item spot-vert-x" style={{writingMode:'vertical-lr'}}>Aufzug</div>
         <div className="grid-item span-4-2"></div>
         <div className="grid-item span-20-2">Strasse</div>
         <div className='grid-item spot-vert-x'>1</div>
@@ -29,12 +29,12 @@ export const SpotsList = ({ floor, spots, filters, uid, hasspot }) => (
         <div className='grid-item spot-vert-x'>3</div>
         <div className='grid-item spot-vert-x'>4</div>
         <Spot {...spots[83]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-horz-o' />
-        <div className="grid-item span-1-10">str</div>
+        <div className="grid-item span-1-10" style={{writingMode:'vertical-lr'}}>Strasse</div>
         <div className="grid-item span-4-1"></div>
         <div className="grid-item span-1-10"></div>
         <div className="grid-item span-4-1"></div>
-        <div className="grid-item span-2-10">str</div>
-        <div className="grid-item span-2-4">x</div>
+        <div className="grid-item span-2-10" style={{writingMode:'vertical-lr'}}>Strasse</div>
+        <div className="grid-item span-2-4"></div>
         <div className='grid-item spot-horz-x'>83</div>
         <div className="grid-item spot-horz-x"></div>
         <div className="grid-item spot-horz-x"></div>
@@ -102,7 +102,7 @@ export const SpotsList = ({ floor, spots, filters, uid, hasspot }) => (
         <Spot {...spots[40]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
         <Spot {...spots[39]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
         <Spot {...spots[38]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
-        <div className='grid-item spot-vert-x'>Au</div>
+        <div className='grid-item spot-vert-x'style={{writingMode:'vertical-lr'}}>Aufzug</div>
         <div className='grid-item spot-vert-x'></div>
         <Spot {...spots[37]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
         <Spot {...spots[36]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
@@ -129,7 +129,7 @@ export const SpotsList = ({ floor, spots, filters, uid, hasspot }) => (
             <div className='grid-item spot-vert-x'>135</div>
             <div className='grid-item spot-vert-x'>134</div>
             <div className='grid-item spot-vert-x'>133</div>
-            <div className='grid-item spot-vert-x'>AUF</div>
+            <div className='grid-item spot-vert-x'style={{writingMode:'vertical-lr'}}>Aufzug</div>
             <div className="grid-item span-4-2"></div>
             <Spot {...spots[146]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-horz-o' />
             <div className="grid-item span-19-2">Strasse</div>
@@ -208,7 +208,7 @@ export const SpotsList = ({ floor, spots, filters, uid, hasspot }) => (
             <Spot {...spots[106]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
             <Spot {...spots[107]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
             <Spot {...spots[108]} {...filters} uid={uid} hasspot={hasspot} layout='grid-item spot-vert-o' />
-            <div className='grid-item spot-vert-x'>Auf</div>
+            <div className='grid-item spot-vert-x'style={{writingMode:'vertical-lr'}}>Aufzug</div>
             <div className='grid-item spot-vert-x'></div>
             <div className='grid-item spot-vert-x'>110</div>
             <div className='grid-item spot-vert-x'>111</div>

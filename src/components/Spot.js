@@ -45,19 +45,21 @@ const Spot = (props) => {
     let ind; 
     let  takenOwner;
 
-    const takenSpot = takenSpots.filter((date, index) => {
+    const takenSpot = takenSpots.find((date, index) => {
         ind = index;
         return moment(date).isSame(moment(props.actualDate), 'day')
     })
 
-    if(takenSpot.length){
+
+    if(takenSpot){
         takenOwner = takenOwners[ind]
     }
     else{
         takenOwner = undefined
     }
+
     
-    const taken = takenSpot.length
+    const taken = !!takenSpot
 
     return (
         <React.Fragment>
@@ -65,7 +67,7 @@ const Spot = (props) => {
             style={free  ? {background: 'limegreen'} : (taken ? {background: 'lightblue'} : {})}
             
              >
-            <div onClick={onOpen} >
+            <div style={{height: '100%', width:'100%', display: 'flex', justifyContent: 'center', alignItems: 'center'}} onClick={onOpen} >
                 {props.number}
             </div>
             </Tilt>

@@ -33,8 +33,8 @@ const renderApp = () => {
 // ReactDOM.render(<p>Loading...</p>, document.getElementById('app'));
 
 auth.onAuthStateChanged(user => {
-    //if (user && user.emailVerified) 
-    if (user)
+    if (user && user.emailVerified) 
+    //if (user)
     {
         console.log(user.emailVerified)
         store.dispatch(startGetSpots()).then(() => {

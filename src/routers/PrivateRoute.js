@@ -12,7 +12,7 @@ export const PrivateRoute = ({
         <Route {...rest} component={(props) => (
             isAuthenticated ? (
                 <div>
-                    <Header />
+                    <Header floor={props.match.path.substring(1,3)} />
                     <div className='content_container'>
                         <div className= 'main_content'>
                             <Component {...props}/>

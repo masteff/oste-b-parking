@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { startLogout } from '../actions/auth'
 
 
-export const Header = ({ signOut }) => (
+export const Header = ({ signOut, floor }) => (
     <header>
         <div className="header">
             <div className="content_container">
@@ -17,7 +17,7 @@ export const Header = ({ signOut }) => (
         <div className="page-header">
         <div className="header__link_button content_container" >
             <Link className="header__link" to='/u1' >
-                <div className="u1">
+                <div className={floor !== "u1" ? "u1" : "u1_border"}>
                     U1
                 </div>
             </Link>

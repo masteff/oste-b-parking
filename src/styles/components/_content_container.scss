@@ -2,12 +2,19 @@
     margin: 0 auto;
     padding: 0 $m-size;
 }
+.content_container_color {
+    margin: 0 auto;
+    padding: 0 $m-size;
+    background: #f5f6f7;
+}
 
 .main_content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 0;
+    background: #f5f6f7;
+
 }
 
 @media (max-width: 1200px){

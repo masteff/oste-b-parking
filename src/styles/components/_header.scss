@@ -1,5 +1,5 @@
 .header {
-    background: $dark-blue
+    background: #1b2a49
 }
 
 .header__title {
@@ -34,13 +34,25 @@
     }
 }
 .u1{
-    background: #55b23f;
+    background: #00909e;
+    border: 1px solid grey;
+    
 }
 .u1_border{
-    background: #55b23f;
-    border: red 10px solid;
+    background: #00909e;
+    outline: none;
+    border-color: #94cdfc;
+    box-shadow: 0 0 20px #94cdfc
 }
 
 .u2{
-    background: #f25a29;
+    background: #00909e;
+    border: 1px solid grey;
+}
+
+.u2_border{
+    background:  #00909e;
+    outline: none;
+    border-color: #94cdfc;
+    box-shadow: 0 0 20px #94cdfc
 }

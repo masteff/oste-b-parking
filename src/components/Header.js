@@ -22,7 +22,7 @@ export const Header = ({ signOut, floor }) => (
                 </div>
             </Link>
             <Link className="header__link" to='/u2' >
-                <div className="u2">
+                <div className={floor !== "u2" ? "u2" : "u2_border"}>
                     U2
                 </div>
             </Link>

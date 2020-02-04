@@ -13,7 +13,7 @@ export const PrivateRoute = ({
             isAuthenticated ? (
                 <div>
                     <Header floor={props.match.path.substring(1,3)} />
-                    <div className='content_container'>
+                    <div className='content_container_color'>
                         <div className= 'main_content'>
                             <Component {...props}/>
                             <DatePicker />
